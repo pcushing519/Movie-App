@@ -6,6 +6,17 @@ class ApplicationController < ActionController::Base
   def show
     @movie=Movie.find_by_id(params['id'])
   end
+
+  def new
+  end
+  
+  def create
+    m = Movie.new
+    m.image = params['image']
+    m.url = params['url']
+    m.save
+    redirect_to "/movies/#{ m.id }"
+  end
   
 end
 
